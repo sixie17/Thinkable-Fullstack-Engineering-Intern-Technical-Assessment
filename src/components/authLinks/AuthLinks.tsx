@@ -4,7 +4,14 @@ import React from 'react'
 export const AuthLinks = () => {
     const isLogged = false;
     return (
-        isLogged ? (<Link href="#">Post</Link>) : (<Link href="#">Log in</Link>)
+        isLogged ?(
+        <>
+            <Link href="#">Post</Link>
+            <span>Logout</span>
+        </>
+        ) : (
+        <Link href="#">Log in</Link>
+        )
     )
 }
 

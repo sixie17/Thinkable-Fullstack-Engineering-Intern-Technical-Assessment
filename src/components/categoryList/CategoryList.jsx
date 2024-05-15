@@ -2,7 +2,7 @@ import React from 'react';
 
 export const CategoryList = () => {
   return (
-    <div className=" bg-red-900">CategoryList</div>
+    <div className="text-black">CategoryList</div>
   )
 }
 export default CategoryList

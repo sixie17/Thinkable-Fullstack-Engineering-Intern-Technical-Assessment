@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Footer = () => {
   return (
-    <div className="bg-blue-900 text-white text-center py-4">
+    <div className="bg-blue-900 text-white text-center py-4 bottom-0 absolute w-full">
       <div className="container mx-auto">
         <div className="flex justify-center space-x-4 mt-2">
           <a href="#" className="text-white hover:text-gray-300">Privacy Policy</a>
