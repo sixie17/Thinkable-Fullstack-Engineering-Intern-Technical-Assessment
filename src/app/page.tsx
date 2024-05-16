@@ -5,8 +5,12 @@ import Menu from "@/components/Menu/Menu"
 export default function Home() {
   return (
     <div>
+      <div>
        <Featured/>
-       <CategoryList/>
+      </div>
+       <div>
+        <CategoryList/>
+       </div>
        <div>
         <CardList/>
         <Menu/>

@@ -3,7 +3,7 @@ import Pagination from "../pagination/Pagination"
 
 export const CardList = () => {
   return (
-    <div className="text-black">
+    <div>
       <Pagination/>
     </div>
   )
