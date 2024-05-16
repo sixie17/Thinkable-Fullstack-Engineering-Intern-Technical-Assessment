@@ -3,14 +3,14 @@ import Image from 'next/image';
 
 export const Featured = () => {
   return (
-    <div className='mt-32'>
+    <div className='mt-32 overflow-hidden'>
       <h1 className='text-4xl md:text-8xl'>
         <b>Hi it's Yasser Sakine Here</b>
       </h1>
-      <div className='flex flex-col md:flex-row mt-8 md:mt-60 items-center md:gap-20'>
-        <div className='flex-1 h-96 max-w-full relative md:order-2'>
+      <div className='flex flex-col md:flex-row mt-8 md:mt-60 items-center md:gap-20 bg-gray-800 mx-10'>
+        {/* <div className='flex-1 h-96 max-w-full relative md:order-2'> */}
           <Image src="/Rufus.jpeg" width={1024} height={512}/>
-        </div>
+        {/* </div> */}
         <div className='flex-1 md:order-1'>
           <h1 className='text-xl md:text-4xl lg:text-5xl xl:text-6xl'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni amet, odit explicabo aspernatur.</h1>
           <p className='text-sm md:text-base lg:text-lg xl:text-xl'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium delectus cum voluptates odio soluta cumque, voluptatum natus sit officiis et iusto doloremque omnis dolorem, aliquam enim modi ducimus laboriosam vero!laboriosam

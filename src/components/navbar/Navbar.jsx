@@ -31,7 +31,7 @@ export const Navbar = () => {
         </div>
       </div>
       {menuOpen && (
-        <div className="flex flex-col md:hidden w-full items-start py-4 bg-black-800 text-white">
+        <div className="flex flex-col w-full items-start py-4 bg-black-800 text-white">
           <Link href="#" className="hover:text-gray-300 py-4 w-full hover:bg-gray-700 px-4">Home</Link>
           <Link href="#" className="hover:text-gray-300 py-4 w-full hover:bg-gray-700 px-4">Contacts</Link>
           <Link href="#" className="hover:text-gray-300 py-4 w-full hover:bg-gray-700 px-4">About</Link>
