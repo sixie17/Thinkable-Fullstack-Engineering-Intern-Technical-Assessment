@@ -5,7 +5,7 @@ import Link from "next/link";
 import { getCookie } from 'cookies-next';
 // import { cookies } from 'next/headers'
 
-export default async function LoginPage() {
+export default function LoginPage() {
   const router = useRouter();
 
   // State variables
@@ -48,24 +48,24 @@ export default async function LoginPage() {
 
     // If validation passes, clear errors and navigate to the Dashboard
     const data = {email: email, password: password}
-  //   try {
-  //     const response = await fetch("/api/auth/signup", {
-  //       method: "POST",
-  //       body: JSON.stringify(data),
-  //     });
+    try {
+      const response = await fetch("/api/auth/signin", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
 
-  //     if (response.ok) {
-  //       // If sign-up is successful, redirect to Dashboard or another page
-  //       router.push("/Dashboard");
-  //     } else {
-  //       // If sign-up fails, display error message
-  //       const data = await response.json();
-  //       setError(data.message || "Sign-up failed. Please try again.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Sign-up error:", error);
-  //     setError("An unexpected error occurred. Please try again later.");
-  //   }
+      if (response.ok) {
+        // If sign-up is successful, redirect to Dashboard or another page
+        router.push("/Dashboard");
+      } else {
+        // If sign-up fails, display error message
+        const data = await response.json();
+        setError(data.message || "Sign-up failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Sign-up error:", error);
+      setError("An unexpected error occurred. Please try again later.");
+    }
   };
 
   return (
