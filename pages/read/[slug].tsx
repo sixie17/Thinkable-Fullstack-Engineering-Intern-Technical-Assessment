@@ -1,3 +1,4 @@
+"use client"
 import Newsletter from "@/components/Newsletter";
 import { FaChevronLeft } from "react-icons/fa";
 import Link from "next/link";
@@ -9,7 +10,7 @@ export async function getStaticProps(context: { params: { slug: string } }) {
   const { slug } = context.params;
 
   for (const item of posts) {
-    if (item.title.toLowerCase().trim().split(" ").join("-") === slug) {
+    if (item.id === slug) {
       return {
         props: {
           post: JSON.stringify(item),
@@ -21,7 +22,7 @@ export async function getStaticProps(context: { params: { slug: string } }) {
 
 export async function getStaticPaths() {
   const paths: { params: { slug: string } }[] = posts.map((item) => ({
-    params: { slug: item.title.toLowerCase().trim().split(" ").join("-") },
+    params: { slug: item.id },
   }));
 
   return {
@@ -31,6 +32,7 @@ export async function getStaticPaths() {
 }
 
 function Read({ post }: { post: string }) {
+  console.log(post);
   let singlePost: Posts = JSON.parse(post);
 
   return (
