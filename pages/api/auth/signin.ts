@@ -24,7 +24,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-        const { email, password } = req.body;
+        const { email, password } = JSON.parse(req.body);
 
         if (!email || !password) {
             return res.status(400).json({ message: "Email and password are required" });

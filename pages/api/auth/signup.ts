@@ -60,7 +60,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
   
     try {
-      const form: SignupDTO = req.body;
+      const form: SignupDTO = JSON.parse(req.body);
   
       if (!form.userName || !form.password || !form.email) {
         return res.status(400).json({ message: 'Invalid request' });

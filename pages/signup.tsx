@@ -1,7 +1,8 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { SignupDTO } from "@/providers/dto/SignupDTO";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -23,6 +24,15 @@ export default function SignUpPage() {
     "/avatars/avatar5.jpg",
   ];
 
+  useEffect(() => {
+    const token = document.cookie.replace(
+      /(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/,
+      "$1"
+    );
+    if (token) {
+      router.push("/Dashboard");
+    }
+  }, []);
   // Handle input changes
   const handleUsernameChange = (e: any) => {
     setUsername(e.target.value);
@@ -64,17 +74,19 @@ export default function SignUpPage() {
     }
 
     // Prepare form data
-    const formData = new FormData();
-    formData.append("username", username);
-    formData.append("email", email);
-    formData.append("password", password);
-    formData.append("bio", bio);
-    formData.append("avatar", selectedAvatar);
+    const data : SignupDTO =
+    {
+      userName: username,
+      email: email,
+      password:  password,
+      avatar: selectedAvatar,
+      bio: bio
+    } 
 
     try {
       const response = await fetch("/api/auth/signup", {
         method: "POST",
-        body: formData,
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {
