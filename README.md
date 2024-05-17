@@ -1,50 +1,84 @@
-# Thinkable blog
-## Project set up
+OpenBlog is open source template is design and built with nextjs and tailwind CSS. 
 
-1. Running the database
+## Getting Started
 
-in this Project I used `PostgreSQL` inside a docker container, so to run the DB run  the following command
-**MacOS**
-```sh
-docker compose up -d
-```
-**linux**
-```sh
-docker-compose up -d
-```
-after running the DB container now we Have to use prisma migration and generate prisma ressources for the backend check section-2
-
-2. Running the migration
-
-**NOTE: of cours you have to run `npm i` to install dependencies otherwise nothing from what's comming next is going to work**
-
-since we are using `Prisma` for our ORM, we have to create a migration so the the DB includes the tables to do so run the following command
-```sh
-npx prisma migrate dev
+```bash
+# clone the repository
+git clone https://github.com/frontendweb3/open-blog.git
+# change the directory
+cd open-blog
+# install packages with pnpm or npm or yarn.
+pnpm install
+# or
+npm install
+# or
+yarn install
 ```
 
-3. Running the app
+Then, run the development server:
 
-Now that everything is set up we can run the app using the follwing commands
-
-*build*
-
-```sh
-npm run build
-
-```
-*deploy*
-```sh
-npm run start
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-4. testing the app
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-the app includes some unit tests to run them use the following command
-```sh
-npm test
+## Folder Structure
+
+```bash
+.
+├── components
+│   ├── Card.tsx
+│   ├── Footer.tsx
+│   ├── Header.tsx
+│   ├── Layout.tsx
+│   ├── Newsletter.tsx
+│   ├── Pagination.tsx
+│   ├── Search.tsx
+│   └── useFuse.ts
+├── data
+│   └── posts.ts
+├── next.config.js
+├── next-env.d.ts
+├── package.json
+├── pages
+│   ├── 404.tsx
+│   ├── _app.tsx
+│   ├── authors
+│   ├── _document.tsx
+│   ├── index.tsx
+│   ├── read
+│   │   └── [slug].tsx
+│   └── tags
+│       └── [slug].tsx
+├── pnpm-lock.yaml
+├── postcss.config.js
+├── public
+│   ├── favicon.ico
+│   ├── images
+│   │   ├── android.jpg
+│   │   ├── blog-2.jpg
+│   │   ├── camera.jpg
+│   │   ├── computer.jpg
+│   │   ├── health.jpg
+│   │   ├── ios.jpg
+│   │   ├── photographer.jpg
+│   │   ├── smartphone.jpg
+│   │   ├── software-developer.jpg
+│   │   ├── technology.jpg
+│   │   └── vegetables.jpg
+│   ├── moon.jpg
+│   ├── next.svg
+│   ├── thirteen.svg
+│   └── vercel.svg
+├── README.md
+├── styles
+│   └── globals.css
+├── tailwind.config.js
+├── tsconfig.json
+└── type.d.ts
 ```
-
-5. what's next
-
-you might want to check the documentation and to understand how the app is built a full backend documentation is available [here](https://github.com/sixie17/Thinkable-Fullstack-Engineering-Intern-Technical-Assessment/blob/main/backend.md)
