@@ -16,6 +16,7 @@ datasource db {
 model User {
   id       String   @id @default(uuid())
   username String
+  bio      String
   email    String   @unique
   password String
   avatar   Int
@@ -26,6 +27,8 @@ model User {
 model Post {
   id        Int     @id @default(autoincrement())
   likes     Int
+  category  String
+  createdAt DateTime @default(now())
   title     String
   content   String
   authorId  String
