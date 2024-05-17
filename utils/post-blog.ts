@@ -10,6 +10,7 @@ export async function newBlog(blog : PostDto, senderId : string)
         throw new Error("Blog Title Too Short");
     if (blog.category.length < 1)
         throw new Error("Blog Category Too Short");
+    console.log("sendeId", senderId);
 
     const newBlog = await prisma.post.create({
         data: {

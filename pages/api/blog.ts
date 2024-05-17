@@ -22,8 +22,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
   
   try {
-    const post: PostDto = req.body as PostDto; 
-    const newPost = await newBlog(post, currUser.userId);
+    const post = await req.body;
+    const newPost = await newBlog(post, currUser?.userId);
     return res.status(201).json(newPost);
   } catch (error) {
     console.error('Error creating new blog post:', error);
