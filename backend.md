@@ -1,16 +1,65 @@
 ### Backend
 
-* Gets all Posted blogs returns an array of JSON containing `{ID: string, title: string , content: string, author: (JSON of user(check search)), likes: number, likers[]: JSON of user(check search)}`
-```GET /api/allblogs```
-* Gets top 3 blogs with the highest likes returns an array of JSON containing `{ID: string, title: string, content: string, author: string(user ID), likes: number, likers[]: JSON of user(check search)}`
-```GET /api/allblogs/top```
-* Gets a single blog with ID returns JSON containing `{ID: string, title: string, content: string, Likers[]: JSON of user(check search), likes: number}}`
-```GET /api/allblogs/[id]```do
-* Gets a profile by id returns a JSON containing `{ID: string, username: string, blogs[]:(array of JSON like allblogs), photo:URL}`
-```GET /api/profile/[id]```
-* Posts a new blog expects `{title: string, category: string ,content : string}` content should be at least 100 charathers title at least 10 and category at least 1
-```POST /api/blog```
-* Updates an existing blog with ID, caller should be author expects `{title:string,conent : string, category : string }`
-```POST /api/blog/[id]```
-* Adds a like in the blog or removes it depending on  the previous state
-```POST /api/blog/like/[id]```
+1. types:
+(even if an interface here is not explicity implemented it's still used and has to be respected)
+* searched blog
+```js
+interface blog
+{
+    id: number;
+    likes: number;
+    createdAt: Date;
+    title: string;
+    content: string;
+    author: {
+        id: string;
+        username: string;
+        avatar: number;
+    };
+    likers: {
+        id: string;
+        username: string;
+        avatar: number;
+    }[]
+}
+```
+* posted blog
+```js
+export interface PostDto
+{
+    title: string,
+    content: string,
+    category: string,
+}
+```
+* searched user
+```js
+export interface user
+{
+    id: string;
+    username: string;
+    bio: string;
+    avatar: number;
+    posts: {
+        id: number;
+        likes: number;
+        category: string;
+        createdAt: Date;
+        title: string;
+        content: string;
+    }[];
+}
+```
+* Signup form
+
+```js
+export interface SignupDTO
+{
+    userName: string;
+    email: string;
+    password: string;
+    avatar: number;
+    bio: string
+}
+```
+

@@ -40,6 +40,13 @@ export async function findBlog(id: number)
       createdAt :true,
       title:true,
       content: true,
+      likers: {
+        select: {
+          id: true,
+          username: true,
+          avatar: true
+        }
+      },
       author: {
           select : {
             id: true,
