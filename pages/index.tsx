@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+// import { useCookies } from "react-cookie";
+import { getCookie } from 'cookies-next';
+// import { cookies } from 'next/headers'
 
-export default function LoginPage() {
+export default async function LoginPage() {
   const router = useRouter();
 
   // State variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  // const [cookies, setCookie, removeCookie] = useCookies(['token']);
 
   // Handle input changes
   const handleEmailChange = (e: any) => {
@@ -19,8 +23,15 @@ export default function LoginPage() {
     setPassword(e.target.value);
   };
 
+  useEffect(() => {
+    console.log(getCookie("token"));
+    
+    if (getCookie("token"))
+      router.push("/Dashboard");
+  }, []);
+
   // Handle form submission
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
     // Basic validation
@@ -36,8 +47,25 @@ export default function LoginPage() {
     }
 
     // If validation passes, clear errors and navigate to the Dashboard
-    setError("");
-    router.push("/Dashboard");
+    const data = {email: email, password: password}
+  //   try {
+  //     const response = await fetch("/api/auth/signup", {
+  //       method: "POST",
+  //       body: JSON.stringify(data),
+  //     });
+
+  //     if (response.ok) {
+  //       // If sign-up is successful, redirect to Dashboard or another page
+  //       router.push("/Dashboard");
+  //     } else {
+  //       // If sign-up fails, display error message
+  //       const data = await response.json();
+  //       setError(data.message || "Sign-up failed. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Sign-up error:", error);
+  //     setError("An unexpected error occurred. Please try again later.");
+  //   }
   };
 
   return (

@@ -42,8 +42,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!isPasswordValid) {
             return res.status(401).json({ message: "Invalid email or password" });
         }
+        console.log("hello!");
 
         const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
+        console.log(token);
 
         res.setHeader('Set-Cookie', `token=${token}; HttpOnly; Max-Age=${60 * 60 * 24 * 7}; Path=/`);
 
