@@ -2,6 +2,12 @@ import { verifyJWT } from '@/middleware/auth'
 import { NextRequest, NextResponse } from 'next/server'
 import { findAllBlogs } from './util';
 
+/**
+ * GET request handler for fetching all blogs.
+ *
+ * @param req - The Next.js request object.
+ * @returns A JSON response containing an array of sorted blogs.
+ */
 export async function GET(
   req: NextRequest,
 ) {

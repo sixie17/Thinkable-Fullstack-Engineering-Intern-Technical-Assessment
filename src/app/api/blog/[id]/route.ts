@@ -2,6 +2,15 @@ import { verifyJWT } from "@/middleware/auth";
 import { PostDto } from "@/providers/dto/PostDtop";
 import { NextRequest, NextResponse } from "next/server";
 import { updateBlog } from "../util";
+
+/**
+ * POST request handler for updating a blog post.
+ *
+ * @param req - The Next.js request object.
+ * @returns A NextResponse object with the updated blog post or an error message.
+ * @throws An error if the request fails.
+ */
+
 export async function POST(req: NextRequest)
 {
     const { pathname } = new URL(req.url);

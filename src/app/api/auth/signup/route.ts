@@ -9,6 +9,12 @@ import jwt, { Secret } from 'jsonwebtoken';
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const JWT_SECRET = process.env.JWT_SECRET || "";
 
+/**
+ * Registers a new user in the system.
+ *
+ * @param form - The user registration data.
+ * @returns A response containing the newly created user's information and a JWT token.
+ */
 async function register(form: SignupDTO)
 {
     if (JWT_SECRET.length == 0)

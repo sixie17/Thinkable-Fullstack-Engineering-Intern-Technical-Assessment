@@ -5,6 +5,14 @@ import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || '';
 
+/**
+ * POST endpoint for user login.
+ *
+ * @param req - The Next.js request object.
+ * @returns A JSON response containing the user's username, email, and avatar, along with a JWT token in a cookie.
+ * @throws BadRequestError if the request is invalid.
+ * @throws UnauthorizedError if the email or password is invalid.
+ */
 export async function POST(req: NextRequest) {
     if (JWT_SECRET.length == 0)
         return NextResponse.json({ message: "JWT_SECRET env variable not set" }, { status: 500 });
