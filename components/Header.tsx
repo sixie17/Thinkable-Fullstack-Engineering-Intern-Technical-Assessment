@@ -6,13 +6,14 @@ import {
   FaSun,
   FaRegMoon,
 } from "react-icons/fa";
-import { RiLoginCircleLine } from "react-icons/ri";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import Search from "@/components/Search";
+import { useRouter } from "next/router";
 
 function Header({ isLogin }: { isLogin: boolean }) {
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
 
   return (
     <header className="not-prose px-2 sm:px-4 py-2.5 w-full">
@@ -33,7 +34,7 @@ function Header({ isLogin }: { isLogin: boolean }) {
 
           <li>
             <Link
-              href="#"
+              href="https://x.com/SakineYasser"
               className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:text-blue-700 dark:hover:text-blue-700 md:p-0 dark:text-white"
               aria-current="page"
             >
@@ -42,7 +43,7 @@ function Header({ isLogin }: { isLogin: boolean }) {
           </li>
           <li>
             <Link
-              href="#"
+              href="https://www.linkedin.com/in/yasser-sakine-952ab8197/"
               className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:text-blue-700 dark:hover:text-blue-700 md:p-0 dark:text-white"
             >
               <FaLinkedin />
@@ -55,6 +56,15 @@ function Header({ isLogin }: { isLogin: boolean }) {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
               {theme === "dark" ? <FaSun /> : <FaRegMoon />}
+            </button>
+          </li>
+          
+          <li>
+            <button
+              className="justify-center flex rounded-md w-20 bg-green-900"
+              onClick={() => router.push('/edit')}
+            >
+              Post
             </button>
           </li>
         </ul>

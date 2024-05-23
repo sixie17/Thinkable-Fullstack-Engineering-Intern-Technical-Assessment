@@ -36,7 +36,7 @@ export default function Home() {
       </main>
       <Pagination
         currentPage={currentPage}
-        pageSize={5}
+        pageSize={posts.length / 5}
         setPage={(number: number) => setCurrentPage(number)}
       />
     </>
